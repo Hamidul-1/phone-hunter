@@ -23,11 +23,39 @@ const showMobileDetails = mobiles => {
               <h5 class="card-title">Phone Name: ${mobile.phone_name}</h5>
               <h5>Phone Brand: ${mobile.brand}</h5>
               <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="all-button">
+                <button onclick="details('${mobile.slug}')" class="btn btn-success">Details</button>
+            </div>
             </div>
           </div>
         `;
         searchMobile.appendChild(div);
     })
     
+};
+
+const details = (id) => {
+  const url = `https://openapi.programming-hero.com/api/phone/${id}
+  `;
+  console.log(url);
+  fetch(url)
+  .then(response => response.json())
+  .then(data => setDetails(data.data));
+}
+
+const setDetails = (info) => {
+  console.log(info);
+  const phoneDetails = document.getElementById('phone-details');
+  const div = document.createElement('div');
+  div.classList.add('card');
+  div.innerHTML = `
+  <img src="${info.mainFeatures.image}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${info.mainFeatures}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  `;
+  phoneDetails.appendChild(div);
 
 }
