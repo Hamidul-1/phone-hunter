@@ -8,13 +8,14 @@ const allPhones = () => {
     // load data
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchPhone}`;
     fetch(url)
-    .then(response => response.json())
-    .then(data => showMobileDetails(data.data));
+      .then(response => response.json())
+      .then(data => showMobileDetails(data.data));
 };
 
 const showMobileDetails = mobiles => {
     // console.log(mobiles);
     const searchMobile = document.getElementById('search-mobile');
+    searchMobile.textContent = '';
     if (!mobiles[0]){
       document.getElementById('hide2').style.display = 'block'
     }
@@ -30,7 +31,6 @@ const showMobileDetails = mobiles => {
             <div class="card-body">
               <h5 class="card-title">Phone Name: ${mobile.phone_name}</h5>
               <h5>Phone Brand: ${mobile.brand}</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               <div class="all-button">
                 <button onclick="details('${mobile.slug}')" class="btn btn-success">Details</button>
             </div>
@@ -39,27 +39,8 @@ const showMobileDetails = mobiles => {
         `;
         searchMobile.appendChild(div);
     })
-    }
+  }
     
-    /* mobiles.forEach(mobile => {
-        console.log(mobile);
-        const div = document.createElement('div');
-        div.classList.add('col');
-        div.innerHTML = `
-        <div class="card h-100">
-            <img src="${mobile.image}" class="card-img-top w-50" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Phone Name: ${mobile.phone_name}</h5>
-              <h5>Phone Brand: ${mobile.brand}</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="all-button">
-                <button onclick="details('${mobile.slug}')" class="btn btn-success">Details</button>
-            </div>
-            </div>
-          </div>
-        `;
-        searchMobile.appendChild(div);
-    }) */
     
 };
 
@@ -68,8 +49,8 @@ const details = (id) => {
   `;
   console.log(url);
   fetch(url)
-  .then(response => response.json())
-  .then(data => setDetails(data.data));
+    .then(response => response.json())
+    .then(data => setDetails(data.data));
 }
 
 const setDetails = (info) => {
@@ -97,9 +78,7 @@ const setDetails = (info) => {
     <h6>Bluetooth: ${info.others ? info.others.Bluetooth :'No'}</h6>
     <h6>GPS: ${info.others ? info.others.GPS : 'No'}</h6>
     <h6>NFC: ${info.others ? info.others.NFC  :'No'}</h6>
-    <h6>Radio: ${info.others ?info.others.Radio : 'No'}</h6>
-
-    
+    <h6>Radio: ${info.others ?info.others.Radio : 'No'}</h6> 
   </div>
   `;
   phoneDetails.appendChild(div);
