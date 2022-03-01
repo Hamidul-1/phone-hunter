@@ -15,13 +15,14 @@
             <input id="search-phone" type="text" class="form-control" placeholder="Search the phone you want" aria-label="Recipient's username" aria-describedby="basic-addon2">
             <span onclick="allPhones()" class="input-group-text" id="search-btn">Search
         </div>
-
     </div>
+    <!-- error result handle -->
+    <h6 id="hide" class="hide-me animate_animated animated_shakex">* Search anything! *</h6>
+    <h6 id="hide2" class="hide-me animate_animated animated_shakex">* No Result found! *</h6>
+    
     <!-- Single phone details -->
-    <div id="phone-details" class="w-50 mx-auto">
-        <div class="card">
-            
-        </div>
+    <div id="phone-details" class="row row-cols-1 w-50 mx-auto">
+        
     </div>
 
     <!-- phone search area -->
@@ -34,3 +35,4 @@
     <script src="phone.js"></script>
 </body>
 </html>
+<!-- <h5>WLAN: ${info.others.WLAN ? info.others.WLAN : 'No WLAN found'}</h5> -->
