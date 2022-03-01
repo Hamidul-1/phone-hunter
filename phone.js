@@ -1,15 +1,23 @@
 const allPhones = () => {
-    
+    document.getElementById('phone-details').innerHTML = '';
     const searchField = document.getElementById('search-phone');
     const searchPhone = searchField.value;
     // clear data
     searchField.value = '';
-
-    // load data
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchPhone}`;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => showMobileDetails(data.data));
+    // clear phone detail
+    // phoneDetails.innerHTML = '';
+    if(searchPhone == ''){
+      alert('Please inter a phone name');
+    }
+    else{
+      const url = `https://openapi.programming-hero.com/api/phones?search=${searchPhone}`;
+      // load data
+    
+      fetch(url)
+        .then(response => response.json())
+        .then(data => showMobileDetails(data.data));
+    }
+    
 };
 
 const showMobileDetails = mobiles => {
@@ -21,14 +29,14 @@ const showMobileDetails = mobiles => {
     }
     else{
       document.getElementById('hide2').style.display = 'none'
-      mobiles.forEach(mobile => {
+      mobiles.slice(0,20).forEach(mobile => {
         console.log(mobile);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
         <div class="card h-100">
-            <img src="${mobile.image}" class="card-img-top mx-auto w-50" alt="...">
-            <div class="card-body">
+            <img src="${mobile.image}" class="card-img-top mx-auto p-3 w-50" alt="...">
+            <div class="card-body p-3 mb-2">
               <h5 class="card-title">Phone Name: ${mobile.phone_name}</h5>
               <h5>Phone Brand: ${mobile.brand}</h5>
               <div class="all-button">
@@ -56,14 +64,14 @@ const details = (id) => {
 const setDetails = (info) => {
   console.log(info);
   const phoneDetails = document.getElementById('phone-details');
-  phoneDetails.textContent = '';
+  phoneDetails.innerHTML = '';
   const div = document.createElement('div');
   div.classList.add('card');
   div.innerHTML = `
-  <img src="${info.image}" class="card-img-top w-50 mx-auto" alt="...">
-  <div class="card-body p-5">
+  <img src="${info.image}" class="card-img-top p-3 w-50 mx-auto" alt="...">
+  <div class="p-3 mb-2">
     <h5 class="card-title">Name: ${info.name}</h5>
-
+    
     <h5>Brand: ${info.brand}</h5>
     <h5><b>Release Date</b></h5>
     <h6>${info.releaseDate ? info.releaseDate : 'No-release date found' }</h6>
