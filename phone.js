@@ -27,7 +27,7 @@ const showMobileDetails = mobiles => {
         div.classList.add('col');
         div.innerHTML = `
         <div class="card h-100">
-            <img src="${mobile.image}" class="card-img-top w-50" alt="...">
+            <img src="${mobile.image}" class="card-img-top mx-auto w-50" alt="...">
             <div class="card-body">
               <h5 class="card-title">Phone Name: ${mobile.phone_name}</h5>
               <h5>Phone Brand: ${mobile.brand}</h5>
@@ -61,7 +61,7 @@ const setDetails = (info) => {
   div.classList.add('card');
   div.innerHTML = `
   <img src="${info.image}" class="card-img-top w-50 mx-auto" alt="...">
-  <div class="card-body">
+  <div class="card-body p-5">
     <h5 class="card-title">Name: ${info.name}</h5>
 
     <h5>Brand: ${info.brand}</h5>
