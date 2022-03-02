@@ -34,14 +34,14 @@ const showMobileDetails = mobiles => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-        <div class="card h-100 ">
+        <div class="card h-100 w-100 p-2">
             <img src="${mobile.image}" class="card-img-top mx-auto p-3 w-75" alt="...">
-            <div class="card-body p-3 mb-2">
-              <h5 class="card-title">Phone Name: ${mobile.phone_name}</h5>
-              <h5>Phone Brand: ${mobile.brand}</h5>
-              <div class="all-button">
-                <button onclick="details('${mobile.slug}')" class="btn btn-success">Details</button>
-            </div>
+            <div class="card-body w-100 p-3 mb-2">
+              <h5 class="card-title text-center">Phone Name: ${mobile.phone_name}</h5>
+              <h5 class="text-center">Phone Brand: ${mobile.brand}</h5>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button onclick="details('${mobile.slug}')" class="btn btn-primary" type="button">Details</button>
+              </div>
             </div>
           </div>
         `;
